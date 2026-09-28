@@ -1,0 +1,54 @@
+# BlacksmithAI Full Stack Docker Compose
+# Deploys all services: mini-kali, dashboard, redis, etc.
+
+version: '3.8'
+
+services:
+  # Penetration testing container
+  mini-kali:
+    image: yohannesgk/mini-kali-slim:latest
+    container_name: shell-executor
+    ports:
+      - "9756:9756"
+    volumes:
+      - ./shared:/shared
+    networks:
+      - blacksmith-net
+    restart: unless-stopped
+
+  # Redis for task queue and caching
+  redis:
+    image: redis:alpine
+    container_name: blacksmith-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - blacksmith-net
+    restart: unless-stopped
+    volumes:
+      - redis-data:/data
+
+  # Web Dashboard (optional, can run locally too)
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.dashboard
+    container_name: blacksmith-dashboard
+    ports:
+      - "8501:8501"
+    depends_on:
+      - mini-kali
+      - redis
+    environment:
+      - CONTAINER_URI=http://mini-kali:9756
+      - REDIS_URL=redis://redis:6379
+    networks:
+      - blacksmith-net
+    restart: unless-stopped
+
+networks:
+  blacksmith-net:
+    driver: bridge
+
+volumes:
+  redis-data:
