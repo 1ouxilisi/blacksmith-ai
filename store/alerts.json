@@ -1,0 +1,22 @@
+{
+  "alerts": [
+    {
+      "type": "slow_scan",
+      "severity": "warning",
+      "message": "Scan took 72.7s (> 60s)",
+      "timestamp": "2026-09-28T21:23:39.141988"
+    },
+    {
+      "type": "slow_scan",
+      "severity": "warning",
+      "message": "Scan took 89.0s (> 60s)",
+      "timestamp": "2026-09-28T21:25:08.277739"
+    },
+    {
+      "type": "slow_scan",
+      "severity": "warning",
+      "message": "Scan took 60.7s (> 60s)",
+      "timestamp": "2026-09-28T21:26:09.102483"
+    }
+  ]
+}

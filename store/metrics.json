@@ -1,0 +1,25 @@
+{
+  "metrics": [
+    {
+      "timestamp": "2026-09-28T21:23:38.798050",
+      "target": "http://localhost:9999/chat",
+      "duration_seconds": 72.69377422332764,
+      "findings_count": 2,
+      "status": "completed"
+    },
+    {
+      "timestamp": "2026-09-28T21:25:08.233305",
+      "target": "http://localhost:9998/chat",
+      "duration_seconds": 88.97899603843689,
+      "findings_count": 0,
+      "status": "completed"
+    },
+    {
+      "timestamp": "2026-09-28T21:26:09.066285",
+      "target": "http://localhost:9995/chat",
+      "duration_seconds": 60.69672751426697,
+      "findings_count": 5,
+      "status": "completed"
+    }
+  ]
+}
